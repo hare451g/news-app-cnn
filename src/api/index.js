@@ -4,10 +4,29 @@ import { CATEGORIES } from './constants';
 async function getRecentNews() {
   try {
     const { data, error } = await httpClient.get();
+
     if (error) {
       throw new Error(error);
     }
-    return { data };
+
+    // separate headline
+    const headline = data[0];
+    const list = data.slice(1);
+
+    // get base image url
+    const { poster } = headline;
+    const basePosterURL = poster.split('?')[0];
+    const resizedPoster = `${basePosterURL}?w=${382}&q=${180}`;
+
+    // change poster size of headline
+    headline.poster = resizedPoster;
+
+    return {
+      data: {
+        headline,
+        list,
+      },
+    };
   } catch (error) {
     return { error: error.message };
   }
