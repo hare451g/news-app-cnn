@@ -1,0 +1,8 @@
+.back-button {
+  color: #2a5de0, 100%;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+}
