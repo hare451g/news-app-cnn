@@ -1,9 +1,10 @@
 import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
+import BackButton from '../../components/BackButton';
 import reducer, { initialState, effects } from './reducer';
 import NewsDetailLayout from './NewsDetailLayout';
-import BackButton from '../../components/BackButton';
+import './index.css';
 
 function NewsDetailsFeature({ category, id, slug }) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -24,7 +25,9 @@ function NewsDetailsFeature({ category, id, slug }) {
   if (body) {
     return (
       <div>
-        <BackButton to="/" label="Recent News" />
+        <nav className="news-details-nav">
+          <BackButton to="/" label="Recent News" />
+        </nav>
         <NewsDetailLayout
           body={body}
           category={category}
