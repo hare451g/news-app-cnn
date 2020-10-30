@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
+import { navigate } from '@reach/router';
 
 import MaterialIcons from '../components/MaterialIcons';
 import './BackButton.css';
 
-const BackButton = ({ target, label }) => (
-  <Link to={target} className="back-button">
+const BackButton = ({ label }) => (
+  <button className="back-button" onClick={(e) => navigate(-1)}>
     <MaterialIcons name="keyboard_arrow_left" /> <span>Back to {label}</span>
-  </Link>
+  </button>
 );
 
 BackButton.propTypes = {

@@ -5,4 +5,7 @@
   line-height: 22px;
   display: flex;
   align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
