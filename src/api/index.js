@@ -1,5 +1,5 @@
 import httpClient from './httpClient';
-import { CATEGORIES } from './constants';
+import { CATEGORIES, ORIGIN_HOST } from './constants';
 
 /**
  * News Item
@@ -7,8 +7,10 @@ import { CATEGORIES } from './constants';
  * @property {string} judul - judul berita
  * @property {string} link - link berita, dapat digunakan untuk id detail berita
  * @property {string} poster - poster berita, dalam jpeg
+ * @property {string} host - host address
  * @property {string} tipe - tipe atau kategori berita
- * @property {string} waktu - waktu dari berita rilis
+ * @property {string} id - id of news
+ * @property {string} slug - slug from news title
  */
 
 /**
@@ -37,9 +39,22 @@ async function getRecentNews() {
       throw new Error(error);
     }
 
+    // compose link
+    const composedData = data.map((news) => {
+      const { link } = news;
+      const [host, tipe, id, slug] = link.split('https://')[1].split('/');
+      return {
+        host,
+        tipe,
+        id,
+        slug,
+        ...news,
+      };
+    });
+
     // separate headline
-    const headline = data[0];
-    const list = data.slice(1);
+    const headline = composedData[0];
+    const list = composedData.slice(1);
 
     // get base image url
     const { poster } = headline;
@@ -63,12 +78,16 @@ async function getRecentNews() {
 /**
  * Get news details
  * Fetch news detail with link
- * @param {string} link - link of news
+ * @param {string} category - category of news
+ * @param {string} id - id of news
+ * @param {string} slug - slug of news
  */
-async function getNewsDetails(link) {
+async function getNewsDetails(category, id, slug) {
   try {
-    const { data, error } = await httpClient.get('/detail/', {
-      url: link,
+    const composedURL = `${ORIGIN_HOST}/${category}/${id}/${slug}`;
+
+    const { data, error } = await httpClient.get('detail/', {
+      url: composedURL,
     });
     if (error) {
       throw new Error(error);
