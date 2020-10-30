@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../api';
-import NewsItem from './NewsItem';
+import NewsItemList from './NewsItemList';
 
 function App() {
   const [newsItems, setNewsItems] = useState();
@@ -17,17 +17,7 @@ function App() {
 
   if (newsItems) {
     const { headline, list } = newsItems;
-
-    const newsList = list.map((news) => (
-      <NewsItem
-        judul={news.judul}
-        poster={news.poster}
-        tipe={news.tipe}
-        waktu={news.waktu}
-      />
-    ));
-
-    return <div>{newsList}</div>;
+    return <NewsItemList list={list} />;
   }
 
   return (
