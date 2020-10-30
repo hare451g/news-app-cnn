@@ -28,6 +28,8 @@ function RecentNewsFeature() {
         judul={headline.judul}
         poster={headline.poster}
         tipe={headline.tipe}
+        id={headline.id}
+        slug={headline.slug}
       />
       <NewsItemList list={list} />
     </div>
