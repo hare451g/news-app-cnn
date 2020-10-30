@@ -10,5 +10,6 @@
 
 .news-category-label {
   width: 180px;
-  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
 }
