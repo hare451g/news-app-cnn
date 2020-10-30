@@ -1,17 +1,18 @@
 import { useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import NewsHeadline from '../../components/NewsHeadline';
 
 import NewsItemList from '../../components/NewsItemList';
 import reducer, { effects, initialState } from './reducer';
 import './index.css';
 
-function AllNewsFeature() {
+function AllNewsFeature({ category }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { error, headline, isLoading, list } = state;
 
   useEffect(() => {
-    effects.fetchRecent(dispatch);
-  }, []);
+    effects.fetchRecent(dispatch, category);
+  }, [category]);
 
   if (error) {
     return <div>{error} </div>;
@@ -31,5 +32,13 @@ function AllNewsFeature() {
     </div>
   );
 }
+
+AllNewsFeature.propTypes = {
+  category: PropTypes.string,
+};
+
+AllNewsFeature.defaultProps = {
+  category: '',
+};
 
 export default AllNewsFeature;

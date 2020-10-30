@@ -8,7 +8,7 @@ function Page({ children, title }) {
   const { pathname } = useLocation();
   return (
     <div>
-      <h1>{title}</h1>
+      <h1 className="page-main-title">{title}</h1>
       <main className="page-main-content">{children}</main>
       <NavigationBar current={pathname} />
     </div>

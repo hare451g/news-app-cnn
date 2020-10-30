@@ -5,8 +5,9 @@ import MaterialIcons from '../components/MaterialIcons';
 import './BackButton.css';
 
 const BackButton = ({ label }) => (
-  <button className="back-button" onClick={(e) => navigate(-1)}>
-    <MaterialIcons name="keyboard_arrow_left" /> <span>Back to {label}</span>
+  <button className="back-button" onClick={() => navigate(-1)}>
+    <MaterialIcons name="keyboard_arrow_left" />{' '}
+    <span>Kembali ke berita {label}</span>
   </button>
 );
 

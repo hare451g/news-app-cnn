@@ -50,7 +50,11 @@ const composeNewsData = (data) =>
  */
 async function getAllNews(category = '') {
   try {
-    const { data, error } = await httpClient.get(`${category}/`);
+    const isCategoryValid = CATEGORIES.indexOf(category) >= 0;
+
+    const targetURL = isCategoryValid ? category : '';
+
+    const { data, error } = await httpClient.get(targetURL);
 
     if (error) {
       throw new Error(error);

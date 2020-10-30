@@ -2,7 +2,7 @@ import { Router } from '@reach/router';
 import CategoryPage from '../routes/Category';
 
 import DetailsPage from '../routes/Details';
-import HomePage from '../routes/Home';
+import NewsListPage from '../routes/NewsList';
 import NotFoundPage from '../routes/NotFound';
 import SearchPage from '../routes/SearchPage';
 
@@ -12,8 +12,9 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <HomePage path="/" />
+        <NewsListPage path="/" />
         <CategoryPage path="/kategori/" />
+        <NewsListPage path="/kategori/:category" />
         <SearchPage path="/pencarian/" />
         <DetailsPage path="/:category/:id/:slug" />
         <NotFoundPage path="*" />
