@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 
+import MaterialIcons from '../components/MaterialIcons';
 import './BackButton.css';
 
 const BackButton = ({ target, label }) => (
   <Link to={target} className="back-button">
-    Back to {label}
+    <MaterialIcons name="keyboard_arrow_left" /> <span>Back to {label}</span>
   </Link>
 );
 
