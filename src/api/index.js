@@ -60,6 +60,11 @@ async function getRecentNews() {
   }
 }
 
+/**
+ * Get news details
+ * Fetch news detail with link
+ * @param {string} link - link of news
+ */
 async function getNewsDetails(link) {
   try {
     const { data, error } = await httpClient.get('/detail/', {
