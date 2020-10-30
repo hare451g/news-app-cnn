@@ -11,14 +11,7 @@ async function get(targetURL = '', params = {}) {
   };
 
   try {
-    let endpointURL = `${HOST}/${targetURL}`;
-
-    // if development, use cors anywhere
-    if (process.env.NODE_ENV === 'development') {
-      endpointURL = `${PROXY_CORS_ANYWHERE}/${endpointURL}`;
-    }
-
-    let url = new URL(endpointURL);
+    const url = new URL(`${PROXY_CORS_ANYWHERE}/${HOST}/${targetURL}`);
     url.search = new URLSearchParams(params);
 
     const response = await fetch(url, requestConfig);
