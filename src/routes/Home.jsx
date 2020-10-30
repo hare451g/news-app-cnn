@@ -1,9 +1,9 @@
 import Page from '../components/Page';
-import RecentNewsFeature from '../features/RecentNews';
+import AllNewsFeature from '../features/AllNewsFeature';
 
 const HomePage = () => (
   <Page title="Berita Terkini">
-    <RecentNewsFeature />
+    <AllNewsFeature />
   </Page>
 );
 

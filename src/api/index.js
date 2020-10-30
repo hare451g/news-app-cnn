@@ -48,9 +48,9 @@ const composeNewsData = (data) =>
  * Get recent news list
  * Normalized news with headline or generic News with error
  */
-async function getRecentNews() {
+async function getAllNews(category = '') {
   try {
-    const { data, error } = await httpClient.get();
+    const { data, error } = await httpClient.get(`${category}/`);
 
     if (error) {
       throw new Error(error);
@@ -123,29 +123,10 @@ async function getNewsByKeyword(keyword = '') {
   }
 }
 
-async function getNewsByCategory(category = '') {
-  try {
-    const isCategoryValid = CATEGORIES.indexOf(category) < 0;
-
-    if (isCategoryValid) {
-      throw new Error(`${category} is not a valid category`);
-    }
-
-    const { data, error } = await httpClient.get(`${category}`);
-    if (error) {
-      throw new Error(error);
-    }
-    return { data: composeNewsData(data) };
-  } catch (error) {
-    return { error: error.message };
-  }
-}
-
 const api = {
-  getRecentNews,
+  getAllNews,
   getNewsDetails,
   getNewsByKeyword,
-  getNewsByCategory,
 };
 
 export default api;

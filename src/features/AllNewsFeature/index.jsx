@@ -5,7 +5,7 @@ import NewsItemList from '../../components/NewsItemList';
 import reducer, { effects, initialState } from './reducer';
 import './index.css';
 
-function RecentNewsFeature() {
+function AllNewsFeature() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { error, headline, isLoading, list } = state;
 
@@ -32,4 +32,4 @@ function RecentNewsFeature() {
   );
 }
 
-export default RecentNewsFeature;
+export default AllNewsFeature;

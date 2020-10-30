@@ -43,7 +43,7 @@ export const effects = {
     try {
       dispatch(action.onFetchStart());
 
-      const { data, error } = await api.getRecentNews();
+      const { data, error } = await api.getAllNews();
 
       if (error) {
         throw new Error(error);
