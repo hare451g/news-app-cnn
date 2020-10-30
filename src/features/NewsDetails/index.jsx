@@ -2,7 +2,6 @@ import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import reducer, { initialState, effects } from './reducer';
-import BackButton from '../../components/BackButton';
 import NewsDetailLayout from './NewsDetailLayout';
 import './index.css';
 
@@ -15,32 +14,23 @@ function NewsDetailsFeature({ category, id, slug }) {
   }, [category, id, slug]);
 
   if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (isLoading) {
-    return <div>loading . . . </div>;
-  }
-
-  if (body) {
     return (
       <div>
-        <nav className="news-details-nav">
-          <BackButton to="/" label="Recent News" />
-        </nav>
-        <NewsDetailLayout
-          body={body}
-          category={category}
-          judul={judul}
-          poster={poster}
-        />
+        <h3>Something went wrong:</h3>
+        <p>error: {error || 'unhandled error occurred'}</p>
       </div>
     );
   }
 
   return (
-    <div>
-      News details feature {category}, {id}, {slug}
+    <div className="news-details-container">
+      <NewsDetailLayout
+        body={body}
+        category={category}
+        judul={judul}
+        poster={poster}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

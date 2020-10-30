@@ -39,11 +39,11 @@ export const action = {
 };
 
 export const effects = {
-  fetchRecent: async (dispatch) => {
+  fetchRecent: async (dispatch, category = '') => {
     try {
       dispatch(action.onFetchStart());
 
-      const { data, error } = await api.getRecentNews();
+      const { data, error } = await api.getAllNews(category);
 
       if (error) {
         throw new Error(error);

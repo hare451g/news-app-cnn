@@ -1,0 +1,15 @@
+.news-category-item {
+  width: 180px;
+  margin: 16px 0px;
+}
+
+.news-category-img {
+  height: 128px;
+  width: 180px;
+}
+
+.news-category-label {
+  width: 180px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
