@@ -1,0 +1,27 @@
+.news-headline-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  max-width: 382px;
+}
+
+.news-headline-poster {
+  max-width: 382px;
+  height: 180px;
+  border-radius: 4px;
+}
+
+.news-headline-category {
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: #cb334e;
+}
+
+.news-headline-title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+}
