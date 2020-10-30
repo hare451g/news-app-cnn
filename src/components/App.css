@@ -1,13 +1,17 @@
 body {
   font-family: 'Inter', sans-serif;
   color: #333333;
-  margin: auto;
-  width: 100%;
-  max-width: 414px;
-  padding: 16px;
+  margin: 0;
 }
 
 a {
   color: #333333;
   text-decoration: none;
+}
+
+.app {
+  margin: auto;
+  max-width: 414px;
+  padding: 16px;
+  padding-bottom: 64px;
 }

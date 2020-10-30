@@ -1,8 +1,8 @@
 import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import BackButton from '../../components/BackButton';
 import reducer, { initialState, effects } from './reducer';
+import BackButton from '../../components/BackButton';
 import NewsDetailLayout from './NewsDetailLayout';
 import './index.css';
 
