@@ -1,8 +1,9 @@
 import Page from '../components/Page';
+import NewsCategoryFeature from '../features/NewsCategory';
 
 const CategoryPage = () => (
   <Page title="Kategori">
-    <div>Kategori</div>
+    <NewsCategoryFeature />
   </Page>
 );
 
