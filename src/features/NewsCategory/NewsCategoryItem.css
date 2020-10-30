@@ -1,0 +1,14 @@
+.news-category-item {
+  width: 180px;
+  margin: 16px 0px;
+}
+
+.news-category-img {
+  height: 160px;
+  width: 180px;
+}
+
+.news-category-label {
+  width: 180px;
+  text-align: center;
+}
