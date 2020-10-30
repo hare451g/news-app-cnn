@@ -13,7 +13,7 @@ import './NewsItem.css';
  * @property {string} waktu - waktu dari berita rilis
  */
 const NewsItem = ({ id, judul, poster, slug, tipe, waktu }) => (
-  <Link to={`${tipe}/${id}/${slug}`}>
+  <Link to={`/${tipe}/${id}/${slug}`}>
     <div className="news-item-card">
       <img
         alt={`ilustrasi: ${judul}`}

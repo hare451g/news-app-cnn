@@ -1,8 +1,9 @@
 import Page from '../components/Page';
+import SearchNews from '../features/SearchNews';
 
 const SearchPage = () => (
   <Page title="Pencarian">
-    <div>Pencarian berita</div>
+    <SearchNews />
   </Page>
 );
 

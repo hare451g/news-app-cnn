@@ -28,6 +28,23 @@ import { CATEGORIES, ORIGIN_HOST } from './constants';
  */
 
 /**
+ * Compose news data
+ */
+
+const composeNewsData = (data) =>
+  data.map((news) => {
+    const { link } = news;
+    const [host, tipe, id, slug] = link.split('https://')[1].split('/');
+    return {
+      host,
+      tipe,
+      id,
+      slug,
+      ...news,
+    };
+  });
+
+/**
  * Get recent news list
  * Normalized news with headline or generic News with error
  */
@@ -40,17 +57,7 @@ async function getRecentNews() {
     }
 
     // compose link
-    const composedData = data.map((news) => {
-      const { link } = news;
-      const [host, tipe, id, slug] = link.split('https://')[1].split('/');
-      return {
-        host,
-        tipe,
-        id,
-        slug,
-        ...news,
-      };
-    });
+    const composedData = composeNewsData(data);
 
     // separate headline
     const headline = composedData[0];
@@ -98,6 +105,24 @@ async function getNewsDetails(category, id, slug) {
   }
 }
 
+async function getNewsByKeyword(keyword = '') {
+  try {
+    const isValidKeyword = keyword.length <= 0;
+
+    if (isValidKeyword) {
+      throw new Error('keyword must be provided');
+    }
+
+    const { data, error } = await httpClient.get('search/', { q: keyword });
+    if (error) {
+      throw new Error(error);
+    }
+    return { data: composeNewsData(data) };
+  } catch (error) {
+    return { error: error.message };
+  }
+}
+
 async function getNewsByCategory(category = '') {
   try {
     const isCategoryValid = CATEGORIES.indexOf(category) < 0;
@@ -106,11 +131,11 @@ async function getNewsByCategory(category = '') {
       throw new Error(`${category} is not a valid category`);
     }
 
-    const { data, error } = await httpClient.get(`/${category}`);
+    const { data, error } = await httpClient.get(`${category}`);
     if (error) {
       throw new Error(error);
     }
-    return { data };
+    return { data: composeNewsData(data) };
   } catch (error) {
     return { error: error.message };
   }
@@ -119,6 +144,7 @@ async function getNewsByCategory(category = '') {
 const api = {
   getRecentNews,
   getNewsDetails,
+  getNewsByKeyword,
   getNewsByCategory,
 };
 

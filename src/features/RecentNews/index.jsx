@@ -13,10 +13,6 @@ function RecentNewsFeature() {
     effects.fetchRecent(dispatch);
   }, []);
 
-  if (isLoading) {
-    return <div>Loading . . . </div>;
-  }
-
   if (error) {
     return <div>{error} </div>;
   }
@@ -29,8 +25,9 @@ function RecentNewsFeature() {
         tipe={headline.tipe}
         id={headline.id}
         slug={headline.slug}
+        isLoading={isLoading}
       />
-      <NewsItemList list={list} />
+      <NewsItemList list={list} isLoading={isLoading} />
     </div>
   );
 }
