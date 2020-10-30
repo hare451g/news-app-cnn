@@ -2,7 +2,7 @@ import Page from '../components/Page';
 import RecentNewsFeature from '../features/RecentNews';
 
 const HomePage = () => (
-  <Page>
+  <Page title="Berita Terkini">
     <RecentNewsFeature />
   </Page>
 );

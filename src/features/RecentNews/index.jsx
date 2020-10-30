@@ -23,7 +23,6 @@ function RecentNewsFeature() {
 
   return (
     <div className="recent-news-container">
-      <h1>Berita Terkini</h1>
       <NewsHeadline
         judul={headline.judul}
         poster={headline.poster}
