@@ -24,7 +24,7 @@ const NavigationBar = ({ current = '/' }) => (
   <div className="navigation-bar-container">
     <nav className="navigation-bar">
       {pages.map(({ label, icon, route }) => (
-        <Link to={route}>
+        <Link to={route} key={route}>
           <div
             className={`navigation-bar-item ${route === current && 'active'}`}
             key={route}

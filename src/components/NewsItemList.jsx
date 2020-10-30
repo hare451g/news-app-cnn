@@ -9,9 +9,9 @@ import './NewsItemList.css';
  */
 const NewsItemList = ({ list }) => (
   <div className="news-list-container">
-    {list.map((news) => (
+    {list.map((news, idx) => (
       <NewsItem
-        key={`news-item-${news.id}`}
+        key={`news-${news.tipe}-${news.id}-${idx + 1}`}
         id={news.id}
         judul={news.judul}
         poster={news.poster}
