@@ -21,7 +21,7 @@ Page.propTypes = {
 };
 
 Page.defaultProps = {
-  title: 'Memuat Halaman . . .',
+  title: null,
 };
 
 export default Page;
