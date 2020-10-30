@@ -1,6 +1,6 @@
 const HOST = 'https://www.news.developeridn.com';
+const ORIGIN_HOST = 'https://www.cnnindonesia.com';
 const PROXY_CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com';
-
 const CATEGORIES = [
   'nasional',
   'internasional',
@@ -11,4 +11,4 @@ const CATEGORIES = [
   'gaya-hidup',
 ];
 
-export { HOST, PROXY_CORS_ANYWHERE, CATEGORIES };
+export { HOST, ORIGIN_HOST, PROXY_CORS_ANYWHERE, CATEGORIES };

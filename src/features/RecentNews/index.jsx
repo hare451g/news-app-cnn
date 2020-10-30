@@ -3,6 +3,7 @@ import NewsHeadline from '../../components/NewsHeadline';
 
 import NewsItemList from '../../components/NewsItemList';
 import reducer, { effects, initialState } from './reducer';
+import './index.css';
 
 function RecentNewsFeature() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -12,29 +13,25 @@ function RecentNewsFeature() {
     effects.fetchRecent(dispatch);
   }, []);
 
-  if (list) {
-    return (
-      <div>
-        <NewsHeadline
-          judul={headline.judul}
-          poster={headline.poster}
-          tipe={headline.tipe}
-        />
-        <NewsItemList list={list} />
-      </div>
-    );
+  if (isLoading) {
+    return <div>Loading . . . </div>;
+  }
+
+  if (error) {
+    return <div>{error} </div>;
   }
 
   return (
-    <div className="App">
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+    <div className="recent-news-container">
+      <h1>Berita Terkini</h1>
+      <NewsHeadline
+        judul={headline.judul}
+        poster={headline.poster}
+        tipe={headline.tipe}
+        id={headline.id}
+        slug={headline.slug}
+      />
+      <NewsItemList list={list} />
     </div>
   );
 }

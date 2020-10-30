@@ -3,20 +3,13 @@ import api from '../../api';
 
 export const initialState = {
   error: null,
-  headline: {
-    judul: '',
-    link: '',
-    poster: '',
-    tipe: '',
-    waktu: '',
-    id: '',
-    slug: '',
-  },
   isLoading: false,
-  list: [],
+  judul: '',
+  poster: '',
+  body: '',
 };
 
-const CONTEXT = 'FETCH_RECENT_NEWS';
+const CONTEXT = 'FETCH_DETAILS';
 const FETCH_PENDING = `${CONTEXT}_PENDING`;
 const FETCH_FULLFILLED = `${CONTEXT}_FULLFILLED`;
 const FETCH_REJECTED = `${CONTEXT}_REJECTED`;
@@ -27,9 +20,9 @@ export const action = {
     payload: {},
   }),
 
-  onFetchFullfilled: (headline, list) => ({
+  onFetchFullfilled: (data) => ({
     type: FETCH_FULLFILLED,
-    payload: { headline, list },
+    payload: data,
   }),
 
   onFetchRejected: (error) => ({
@@ -39,17 +32,17 @@ export const action = {
 };
 
 export const effects = {
-  fetchRecent: async (dispatch) => {
+  fetchDetails: async (dispatch, category, id, slug) => {
     try {
       dispatch(action.onFetchStart());
 
-      const { data, error } = await api.getRecentNews();
+      const { data, error } = await api.getNewsDetails(category, id, slug);
 
       if (error) {
         throw new Error(error);
       }
 
-      dispatch(action.onFetchFullfilled(data.headline, data.list));
+      dispatch(action.onFetchFullfilled(data[0]));
     } catch (error) {
       dispatch(action.onFetchRejected(error.message));
     }
@@ -64,8 +57,9 @@ const reducer = produce((draft, action) => {
       break;
     case FETCH_FULLFILLED:
       draft.isLoading = false;
-      draft.headline = action.payload.headline;
-      draft.list = action.payload.list;
+      draft.judul = action.payload.judul;
+      draft.poster = action.payload.poster;
+      draft.body = action.payload.body;
       break;
     case FETCH_REJECTED:
       draft.isLoading = false;

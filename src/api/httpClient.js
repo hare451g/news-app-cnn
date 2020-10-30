@@ -1,13 +1,12 @@
 import { HOST, PROXY_CORS_ANYWHERE } from './constants';
 
-async function get(targetURL = '', config = {}) {
+async function get(targetURL = '', params = {}) {
   const result = {
     data: [],
     error: null,
   };
 
   const requestConfig = {
-    ...config,
     Accept: 'application/json',
   };
 
@@ -19,7 +18,10 @@ async function get(targetURL = '', config = {}) {
       endpointURL = `${PROXY_CORS_ANYWHERE}/${endpointURL}`;
     }
 
-    const response = await fetch(endpointURL, requestConfig);
+    let url = new URL(endpointURL);
+    url.search = new URLSearchParams(params);
+
+    const response = await fetch(url, requestConfig);
     const json = await response.json();
 
     if (json.status !== 200) {

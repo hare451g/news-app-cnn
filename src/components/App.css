@@ -1,0 +1,13 @@
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333333;
+  margin: auto;
+  width: 100%;
+  max-width: 414px;
+  padding: 16px;
+}
+
+a {
+  color: #333333;
+  text-decoration: none;
+}
