@@ -10,7 +10,9 @@ function SearchInput({ onSubmit }) {
   const handleClearClick = (e) => {
     setKeyword('');
   };
+
   const handleKeywordChange = (e) => setKeyword(e.target.value);
+
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     onSubmit(keyword);
