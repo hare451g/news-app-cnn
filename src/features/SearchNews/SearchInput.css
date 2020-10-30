@@ -1,0 +1,28 @@
+.search-news-container {
+  color: #a1a1a1;
+  background-color: #ededed;
+  border-radius: 4px;
+  height: 38px;
+  padding: 0 8px;
+
+  display: flex;
+  align-items: center;
+}
+
+.search-news-input {
+  border: none;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  padding-left: 8px;
+}
+
+.search-news-input:focus {
+  outline: none;
+}
+
+.search-news-icon-button {
+  color: #a1a1a1;
+  cursor: pointer;
+  border: none;
+}
