@@ -14,11 +14,7 @@ function SearchNews() {
   return (
     <div>
       <SearchInput onSubmit={handleSearchNews} />
-      {isLoading ? (
-        <div>loading</div>
-      ) : (
-        <NewsItemList list={list} loading={isLoading} />
-      )}
+      <NewsItemList list={list} isLoading={isLoading} />
     </div>
   );
 }
