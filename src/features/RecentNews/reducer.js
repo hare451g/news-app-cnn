@@ -9,6 +9,8 @@ export const initialState = {
     poster: '',
     tipe: '',
     waktu: '',
+    id: '',
+    slug: '',
   },
   isLoading: false,
   list: [],
