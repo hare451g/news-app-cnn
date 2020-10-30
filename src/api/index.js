@@ -27,7 +27,6 @@ import { CATEGORIES } from './constants';
 
 /**
  * Get recent news list
- * @returns {Promise<NormalizedNewsList|GenericNewsResponse>}
  * Normalized news with headline or generic News with error
  */
 async function getRecentNews() {
