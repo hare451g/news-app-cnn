@@ -1,5 +1,3 @@
-function SearchJobs() {
-  return <input name="keyword" />;
-}
+const SearchJobs = () => <input name="keyword" />;
 
 export default SearchJobs;
